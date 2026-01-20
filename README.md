@@ -23,3 +23,10 @@ Sample Curl request:
      -H "Content-Type: application/json" \
      -d '{"text": "The workshop was absolutely fantastic and I learned a lot!"}'
 ```
+
+**Note:**
+Make sure your Dockerfile path logic is bulletproof. If you are inside llm-distillation-workshop/deployment and run `gcloud run deploy ... with --source .`:
+
+- The context is the current folder.
+- The Dockerfile says COPY ./model /app/model.
+    This means the folder `llm-distillation-workshop/deployment/model` MUST exist and contain the weights before running the deploy command.
