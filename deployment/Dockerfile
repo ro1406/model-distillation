@@ -5,7 +5,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Copy model files and code
-COPY ./distillated_student_model /app/distillated_student_model
+COPY ./model /app/model
 COPY app.py /app/app.py
 
 # Install dependencies

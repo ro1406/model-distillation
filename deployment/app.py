@@ -6,7 +6,7 @@ import os
 app = FastAPI()
 
 
-MODEL_PATH = "./distillated_student_model/"
+MODEL_PATH = "./model/"
 print(f"Loading model from {MODEL_PATH}...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
