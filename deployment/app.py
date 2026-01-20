@@ -26,11 +26,15 @@ async def predict(request: Request):
         return {"error": "No text provided"}
 
     # Tokenize
-    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=128)
+    inputs = tokenizer([text], return_tensors="pt", padding=True, truncation=True, max_length=128)
+    print("Inputs keys after tokenization:", inputs.keys())
 
     # Remove token_type_ids if present (not needed for DistilBERT)
     if "token_type_ids" in inputs:
         del inputs["token_type_ids"]
+
+    inputs.pop("token_type_ids", None)
+    print("Inputs keys before inference:", inputs.keys())
 
     # Inference
     with torch.no_grad():
