@@ -9,9 +9,10 @@ COPY ./model /app/model
 COPY app.py /app/app.py
 
 # Install dependencies
-# PRO TIP: We install the CPU-only version of PyTorch to save space (700MB vs 4GB)
-RUN pip install --no-cache-dir fastapi uvicorn transformers \
-    torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir fastapi uvicorn transformers
+
+# Install PyTorch (CPU version) from the specific PyTorch repository
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
 
 # Expose the port Cloud Run expects (PORT env var)
 ENV PORT=8080
