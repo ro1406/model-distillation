@@ -12,7 +12,8 @@ COPY app.py /app/app.py
 RUN pip install --no-cache-dir fastapi uvicorn transformers
 
 # Install PyTorch (CPU version) from the specific PyTorch repository
-RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+# The CPU wheel is ~200MB, so we give it plenty of time (1000s) to download
+RUN pip install --no-cache-dir --default-timeout=1000 torch --index-url https://download.pytorch.org/whl/cpu
 
 # Expose the port Cloud Run expects (PORT env var)
 ENV PORT=8080
