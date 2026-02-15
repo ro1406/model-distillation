@@ -54,5 +54,3 @@ async def predict(request: Request):
 def home():
     return {"status": "Model is running!"}
 
-
-# gcloud run deploy distilled-classifier --source . --platform managed --region us-central1 --allow-unauthenticated --memory 2Gi
